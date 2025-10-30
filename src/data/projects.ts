@@ -63,7 +63,7 @@ export const projects: Project[] = [
     tags: ["Python", "FastAPI", "Next.js", "GCP", "Firebase", "Data Engineering"],
     award: "Honorable Mention of NASA International Space Apps Challenge 2024",
     role: "Full-Stack Developer",
-    client: "NASA",
+    client: "NASA Space Apps Challenge",
     duration: "2 months",
     details: [
         {
@@ -72,15 +72,15 @@ export const projects: Project[] = [
         },
         {
             title: "Solution",
-            content: "I developed a full-stack web application with a Python FastAPI backend and a Next.js frontend. The system allows users to select regions of interest on a map and subscribe to notifications for new satellite imagery. The backend processes and serves the satellite data, while the frontend provides interactive visualizations."
+            content: "I and my team developed a full-stack web application with a Python FastAPI backend and a Next.js frontend. The system allows users to select regions of interest on a map and subscribe to notifications for new satellite imagery. The backend performs data ETL and calculates the relevant statistics, while the frontend provides interactive visualizations."
         },
         {
             title: "Impact",
             content: "The project won an Honorable Mention at the NASA International Space Apps Challenge 2024. It provides a valuable tool for researchers to access and analyze Landsat data more efficiently."
         },
         {
-            title: "Technologies",
-            content: "Python, FastAPI, Next.js, Google Cloud Platform (GCP), Firebase, Data Engineering"
+            title: "Lessons Learned",
+            content: "Technically, I gained hands-on experience in designing the pipeline of performing data ETL and creating interactive visualizations. I also gained knowledge on deploying my projects on Google Cloud Platform (GCP). Additionally, collaborating with a team on this project enhanced my communication and project management skills."
         }
     ],
     links: [
