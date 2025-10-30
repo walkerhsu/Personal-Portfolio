@@ -155,14 +155,14 @@ export const projects: Project[] = [
   },
   {
     title: "LLM-Enhanced Database Management System",
-    period: "2023 Fall ~ 2024 Spring",
+    period: "2024 Spring",
     description:
-      "Developed a database management system enhanced with LLM capabilities. The project involved integrating natural language processing features to allow users to interact with the database using conversational queries. Also allow extracting information from audios and pdfs to the database and query the contents.",
+      "Developed a database management system enhanced with LLM capabilities. The project involved integrating natural language processing features to allow users to interact with the database using natural languages. Also, it allows extracting information from audios and pdfs.",
     thumbnail: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800&auto=format&fit=crop&q=80",
     tags: ["Python", "LLM", "Whisper", "LangChain", "SQL", "MongoDB"],
-    role: "Backend Developer",
+    role: "AI Engineer",
     client: "Course Project",
-    duration: "2 Quarters",
+    duration: "1 Semester",
     details: [
         {
             title: "Challenge",
@@ -170,15 +170,15 @@ export const projects: Project[] = [
         },
         {
             title: "Solution",
-            content: "I developed a system that uses a Large Language Model to translate natural language questions into database queries. It also uses OpenAI's Whisper to transcribe audio files and LangChain to process PDFs, allowing users to query the content of these files conversationally."
+            content: "I developed a system that uses a Large Language Model (LLM) to translate natural language questions into database queries including SQL and MongoDB. It also uses OpenAI's Whisper to transcribe audio files and applies LangChain to process both audio and PDF documents, allowing the system to wisely extract the information in these unstructured data and upload to te database."
         },
         {
             title: "Impact",
             content: "The system makes database interaction more accessible to a wider range of users and unlocks the information stored in unstructured data formats. It serves as a powerful tool for data analysis and retrieval."
         },
         {
-            title: "Technologies",
-            content: "Python, Large Language Models (LLM), Whisper, LangChain, SQL, MongoDB"
+            title: "Lessons Learned",
+            content: "This project enhanced my skills in database management, natural language processing (NLP), and working with unstructured data. I learned how to effectively integrate various technologies to create a cohesive system that improves user interaction with databases."
         }
     ],
     links: [
