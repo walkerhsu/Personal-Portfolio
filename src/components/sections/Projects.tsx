@@ -3,15 +3,14 @@ import {
   Typography,
   Card,
   CardContent,
-  IconButton,
   Chip,
   Stack,
   Button,
 } from "@mui/material";
 import WorkIcon from "@mui/icons-material/Work";
-import LaunchIcon from "@mui/icons-material/Launch";
 import { Link } from "react-router-dom";
 import { projects } from "../../data/projects";
+import { renderTimeAndAward } from "../utils/projectsUtils";
 
 export default function Projects() {
   return (
@@ -48,36 +47,13 @@ export default function Projects() {
                   }}
                 >
                   <Box>
-                    {project.link ? (
-                      <Button
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        sx={{ textTransform: "none", padding: 0, minWidth: 0 }}
-                      >
-                        <Typography variant="h6" component="h3">
-                          {project.title}
-                        </Typography>
-                      </Button>
-                    ) : (
-                      <Typography variant="h6" component="h3">
-                        {project.title}
-                      </Typography>
-                    )}
+                    <Typography variant="h6" component="h3">
+                      {project.title}
+                    </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {project.period} {project.award && `• ${project.award}`}
+                      {renderTimeAndAward(project.period, project.award)}
                     </Typography>
                   </Box>
-                  {project.link && (
-                    <IconButton
-                      size="small"
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <LaunchIcon />
-                    </IconButton>
-                  )}
                 </Box>
 
                 <Typography variant="body2" color="text.secondary" paragraph>
@@ -89,6 +65,25 @@ export default function Projects() {
                     <Chip key={tagIndex} label={tag} size="small" />
                   ))}
                 </Stack>
+
+                {project.links && project.links.length > 0 && (
+                  <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
+                    {project.links.map((link, linkIndex) => (
+                      <Button
+                        key={linkIndex}
+                        variant="outlined"
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        startIcon={<link.icon size={16} />}
+                        sx={{ textTransform: "none" }}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {link.label}
+                      </Button>
+                    ))}
+                  </Stack>
+                )}
               </CardContent>
             </Card>
           </Link>

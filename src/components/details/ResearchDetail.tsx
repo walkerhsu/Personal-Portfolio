@@ -1,9 +1,10 @@
-import { ArrowLeft, Calendar } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
 import { research } from "../../data/research";
 import { Button, Chip, Divider, Typography, Box, Grid } from "@mui/material";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { useEffect } from "react";
+import { renderTimeAndVenue } from "../utils/researchUtils";
 
 export default function ResearchDetail() {
   const { id } = useParams();
@@ -45,24 +46,16 @@ export default function ResearchDetail() {
             <Typography variant="h3" component="h1" sx={{ fontWeight: "bold" }}>
               {item.title}
             </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: 1,
-                color: "text.secondary",
-                mt: 1,
-              }}
-            >
-              <Calendar size={16} />
-              <Typography variant="body2">{item.period}</Typography>
-              {item.award && (
-                <Typography variant="body2" sx={{ color: "warning.main" }}>
-                  {" "}
-                  &#x2022; {item.award}
-                </Typography>
-              )}
-            </Box>
+            {item.authors && (
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{ mt: 0.5 }}
+              >
+                {item.authors}
+              </Typography>
+            )}
+            {renderTimeAndVenue(item.period, item.venue)}
           </Box>
 
           {/* Tags */}
@@ -74,21 +67,25 @@ export default function ResearchDetail() {
         </Box>
 
         {/* Project Image */}
-        <Box
-          sx={{
-            mb: 6,
-            borderRadius: 2,
-            overflow: "hidden",
-            border: 1,
-            borderColor: "divider",
-          }}
-        >
-          <ImageWithFallback
-            src={item.thumbnail}
-            alt={item.title}
-            className="w-full h-auto aspect-video object-cover"
-          />
-        </Box>
+        {item.thumbnail && (
+          <Box
+            sx={{
+              mb: 6,
+              borderRadius: 2,
+              overflow: "hidden",
+              border: 1,
+              borderColor: "divider",
+              width: "60%",
+              mx: "auto",
+            }}
+          >
+            <ImageWithFallback
+              src={item.thumbnail}
+              alt={item.title}
+              className="w-full h-auto aspect-video object-cover"
+            />
+          </Box>
+        )}
 
         {/* Overview Section */}
         <Box sx={{ mb: 6 }}>
@@ -112,6 +109,7 @@ export default function ResearchDetail() {
         <Grid
           container
           spacing={2}
+          justifyContent="space-between"
           sx={{
             py: 4,
             borderTop: 1,

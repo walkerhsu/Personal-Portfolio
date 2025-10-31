@@ -3,15 +3,14 @@ import {
   Typography,
   Card,
   CardContent,
-  IconButton,
   Chip,
   Stack,
   Button,
 } from "@mui/material";
 import ScienceIcon from "@mui/icons-material/Science";
-import LaunchIcon from "@mui/icons-material/Launch";
 import { Link } from "react-router-dom";
 import { research } from "../../data/research";
+import { renderTimeAndVenue } from "../utils/researchUtils";
 
 export default function Research() {
   return (
@@ -36,7 +35,11 @@ export default function Research() {
 
       <Stack spacing={3}>
         {research.map((item, index) => (
-          <Link to={`/research/${index}`} key={index} style={{ textDecoration: 'none' }}>
+          <Link
+            to={`/research/${index}`}
+            key={index}
+            style={{ textDecoration: "none" }}
+          >
             <Card variant="outlined">
               <CardContent>
                 <Box
@@ -48,36 +51,11 @@ export default function Research() {
                   }}
                 >
                   <Box>
-                    {item.link ? (
-                      <Button
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        sx={{ textTransform: "none", padding: 0, minWidth: 0 }}
-                      >
-                        <Typography variant="h6" component="h3">
-                          {item.title}
-                        </Typography>
-                      </Button>
-                    ) : (
-                      <Typography variant="h6" component="h3">
-                        {item.title}
-                      </Typography>
-                    )}
-                    <Typography variant="body2" color="text.secondary">
-                      {item.period}{item.venue && `• ${item.venue}`} {item.award && `• ${item.award}`}
+                    <Typography variant="h6" component="h3">
+                      {item.title}
                     </Typography>
+                    {renderTimeAndVenue(item.period, item.venue)}
                   </Box>
-                  {item.link && (
-                    <IconButton
-                      size="small"
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <LaunchIcon />
-                    </IconButton>
-                  )}
                 </Box>
 
                 <Typography variant="body2" color="text.secondary" paragraph>
@@ -89,6 +67,25 @@ export default function Research() {
                     <Chip key={tagIndex} label={tag} size="small" />
                   ))}
                 </Stack>
+
+                {item.links && item.links.length > 0 && (
+                  <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
+                    {item.links.map((link, linkIndex) => (
+                      <Button
+                        key={linkIndex}
+                        variant="outlined"
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        startIcon={<link.icon size={16} />}
+                        sx={{ textTransform: "none" }}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {link.label}
+                      </Button>
+                    ))}
+                  </Stack>
+                )}
               </CardContent>
             </Card>
           </Link>

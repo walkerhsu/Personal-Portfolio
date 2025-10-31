@@ -1,9 +1,10 @@
-import { ArrowLeft, Calendar } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
 import { projects } from "../../data/projects";
 import { Button, Chip, Divider, Typography, Box, Grid } from "@mui/material";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { useEffect } from "react";
+import { renderTimeAndAward } from "../utils/projectsUtils";
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -45,24 +46,7 @@ export default function ProjectDetail() {
             <Typography variant="h3" component="h1" sx={{ fontWeight: "bold" }}>
               {project.title}
             </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: 1,
-                color: "text.secondary",
-                mt: 1,
-              }}
-            >
-              <Calendar size={16} />
-              <Typography variant="body2">{project.period}</Typography>
-              {project.award && (
-                <Typography variant="body2" sx={{ color: "warning.main" }}>
-                  {" "}
-                  &#x2022; {project.award}
-                </Typography>
-              )}
-            </Box>
+            {renderTimeAndAward(project.period, project.award)}
           </Box>
 
           {/* Tags */}
@@ -74,21 +58,25 @@ export default function ProjectDetail() {
         </Box>
 
         {/* Project Image */}
-        <Box
-          sx={{
-            mb: 6,
-            borderRadius: 2,
-            overflow: "hidden",
-            border: 1,
-            borderColor: "divider",
-          }}
-        >
-          <ImageWithFallback
-            src={project.thumbnail}
-            alt={project.title}
-            className="w-full h-auto aspect-video object-cover"
-          />
-        </Box>
+        {project.thumbnail && (
+          <Box
+            sx={{
+              mb: 6,
+              borderRadius: 2,
+              overflow: "hidden",
+              border: 1,
+              borderColor: "divider",
+              width: "60%",
+              mx: "auto",
+            }}
+          >
+            <ImageWithFallback
+              src={project.thumbnail}
+              alt={project.title}
+              className="w-full h-auto aspect-video object-cover"
+            />
+          </Box>
+        )}
 
         {/* Overview Section */}
         <Box sx={{ mb: 6 }}>
@@ -112,6 +100,7 @@ export default function ProjectDetail() {
         <Grid
           container
           spacing={2}
+          justifyContent="space-between"
           sx={{
             py: 4,
             borderTop: 1,
