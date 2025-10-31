@@ -6,16 +6,15 @@ import {
   Box,
 } from "@mui/material";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import Navigation from "./components/layout/Navigation";
 import Header from "./components/sections/Header";
 import Projects from "./components/sections/Projects";
-import Publications from "./components/sections/Publications";
+import Research from "./components/sections/Research";
 import Experience from "./components/sections/Experience";
 import Awards from "./components/sections/Awards";
 import ExperienceDetail from "./components/details/ExperienceDetail";
 import ProjectDetail from "./components/details/ProjectDetail";
-import PublicationDetail from "./components/details/PublicationDetail";
+import ResearchDetail from "./components/details/ResearchDetail";
 
 const theme = createTheme({
   palette: {
@@ -64,7 +63,7 @@ const MainLayout = () => {
       <Container maxWidth="lg" sx={{ py: 6 }}>
         <Header />
         <Projects />
-        <Publications />
+        <Research />
         <Experience />
         <Awards />
       </Container>
@@ -86,7 +85,7 @@ export default function App() {
           <Route path="/" element={<MainLayout />} />
           <Route path="/experience/:id" element={<ExperienceDetail />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
-          <Route path="/publication/:id" element={<PublicationDetail />} />
+          <Route path="/research/:id" element={<ResearchDetail />} />
         </Routes>
       </Box>
     </ThemeProvider>

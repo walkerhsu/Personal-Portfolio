@@ -25,36 +25,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Efficient Multimodal Large Language Model",
-    period: "2024 Fall ~ Present",
-    description:
-      "Researching efficient Multimodal Large Language Models (MLLMs) for Visual Question Answering on images and videos. Focusing on integrating motion vectors and token pruning methods to enhance model efficiency and balance model performance.",
-    thumbnail: "https://images.unsplash.com/photo-1581092916376-2960bff38f39?w=800&auto=format&fit=crop&q=80",
-    tags: ["Python", "Pytorch", "Hugging Face", "LLaVA", "Video LLM"],
-    role: "AI Researcher",
-    client: "Academic Research",
-    duration: "1 year",
-    details: [
-      {
-        title: "Challenge",
-        content: "The high computational cost of traditional Multimodal Large Language Models makes them unsuitable for real-time applications on devices with limited resources. There is a need to balance model performance with efficiency."
-      },
-      {
-        title: "Solution",
-        content: "I first researched online to find the possible solutions, then implemented the one that integrates motion vectors into the model. This approach allows the model to reduce the sampling rate of the video while preserving great understanding of dynamic scenes in videos, which can greatly enhance its efficiency while maintaining performance."
-      },
-      {
-        title: "Impact",
-        content: "The implemented methods showed a significant reduction in computational overhead (about 90% reduction) while maintaining competitive performance on several VQA benchmarks. "
-      },
-      {
-        title: "Lessons Learned",
-        content: "From this project, I learned how to perform research systematically. I started from understanding the problem, surveying existing literature, implementing and experimenting with different approaches, and finally analyzing the results. This experience has enhanced my research skills and deepened my understanding of Multimodal Large Language Models."
-      }
-    ],
-    links: [],
-  },
-  {
     title: "Landsat Data Management System",
     period: "2024 Fall",
     description:

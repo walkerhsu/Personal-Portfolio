@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import WorkIcon from "@mui/icons-material/Work";
-import ArticleIcon from "@mui/icons-material/Article";
+import ScienceIcon from "@mui/icons-material/Science";
 import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 
@@ -31,7 +31,7 @@ export default function Navigation({ onNavigate }: NavigationProps) {
 
   const navItems = [
     { id: "projects", label: "Projects", icon: <WorkIcon /> },
-    { id: "publications", label: "Publications", icon: <ArticleIcon /> },
+    { id: "research", label: "Research", icon: <ScienceIcon /> },
     { id: "experience", label: "Experience", icon: <WorkHistoryIcon /> },
     { id: "awards", label: "Awards", icon: <EmojiEventsIcon /> },
   ];

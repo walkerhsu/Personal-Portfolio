@@ -3,20 +3,20 @@ import {
   Typography,
   Card,
   CardContent,
-  Button,
-  Stack,
   IconButton,
   Chip,
+  Stack,
+  Button,
 } from "@mui/material";
-import ArticleIcon from "@mui/icons-material/Article";
+import ScienceIcon from "@mui/icons-material/Science";
 import LaunchIcon from "@mui/icons-material/Launch";
 import { Link } from "react-router-dom";
-import { publications } from "../../data/publications";
+import { research } from "../../data/research";
 
-export default function Publications() {
+export default function Research() {
   return (
     <Box
-      id="publications"
+      id="research"
       component="section"
       sx={{ mb: 8, scrollMarginTop: "100px" }}
     >
@@ -27,16 +27,16 @@ export default function Publications() {
           gutterBottom
           sx={{ display: "flex", alignItems: "center", gap: 1 }}
         >
-          <ArticleIcon /> Publications
+          <ScienceIcon /> Research
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Selected research papers and articles
+          Publications and research work
         </Typography>
       </Box>
 
       <Stack spacing={3}>
-        {publications.map((pub, index) => (
-          <Link to={`/publication/${index}`} key={index} style={{ textDecoration: 'none' }}>
+        {research.map((item, index) => (
+          <Link to={`/research/${index}`} key={index} style={{ textDecoration: 'none' }}>
             <Card variant="outlined">
               <CardContent>
                 <Box
@@ -48,27 +48,30 @@ export default function Publications() {
                   }}
                 >
                   <Box>
-                    {pub.link ? (
+                    {item.link ? (
                       <Button
-                        href={pub.link}
+                        href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         sx={{ textTransform: "none", padding: 0, minWidth: 0 }}
                       >
                         <Typography variant="h6" component="h3">
-                          {pub.title}
+                          {item.title}
                         </Typography>
                       </Button>
                     ) : (
                       <Typography variant="h6" component="h3">
-                        {pub.title}
+                        {item.title}
                       </Typography>
                     )}
+                    <Typography variant="body2" color="text.secondary">
+                      {item.period}{item.venue && `• ${item.venue}`} {item.award && `• ${item.award}`}
+                    </Typography>
                   </Box>
-                  {pub.link && (
+                  {item.link && (
                     <IconButton
                       size="small"
-                      href={pub.link}
+                      href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -76,20 +79,15 @@ export default function Publications() {
                     </IconButton>
                   )}
                 </Box>
-                <Typography
-                  variant="body2"
-                  sx={{ fontStyle: "italic", mb: 2 }}
-                  color="text.secondary"
-                >
-                  {pub.authors}
-                </Typography>
 
                 <Typography variant="body2" color="text.secondary" paragraph>
-                  {pub.description}
+                  {item.description}
                 </Typography>
 
                 <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-                  <Chip key={"venue"} label={pub.venue} size="small" />
+                  {item.tags.map((tag, tagIndex) => (
+                    <Chip key={tagIndex} label={tag} size="small" />
+                  ))}
                 </Stack>
               </CardContent>
             </Card>
