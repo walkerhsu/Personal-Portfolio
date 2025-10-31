@@ -7,15 +7,15 @@ import {
   Stack,
   Button,
 } from "@mui/material";
-import WorkIcon from "@mui/icons-material/Work";
+import ScienceIcon from "@mui/icons-material/Science";
 import { Link } from "react-router-dom";
-import { projects } from "../../data/projects";
-import { renderTimeAndAward } from "../utils/projectsUtils";
+import { research } from "../../data/research";
+import { renderTimeAndVenue } from "../utils/researchUtils";
 
-export default function Projects() {
+export default function Research() {
   return (
     <Box
-      id="projects"
+      id="research"
       component="section"
       sx={{ mb: 8, scrollMarginTop: "100px" }}
     >
@@ -26,16 +26,20 @@ export default function Projects() {
           gutterBottom
           sx={{ display: "flex", alignItems: "center", gap: 1 }}
         >
-          <WorkIcon /> Projects
+          <ScienceIcon /> Research
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Research and development work
+          Publications and research work
         </Typography>
       </Box>
 
       <Stack spacing={3}>
-        {projects.map((project, index) => (
-          <Link to={`/project/${index}`} key={index} style={{ textDecoration: 'none' }}>
+        {research.map((item, index) => (
+          <Link
+            to={`/research/${index}`}
+            key={index}
+            style={{ textDecoration: "none" }}
+          >
             <Card variant="outlined">
               <CardContent>
                 <Box
@@ -48,27 +52,25 @@ export default function Projects() {
                 >
                   <Box>
                     <Typography variant="h6" component="h3">
-                      {project.title}
+                      {item.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {renderTimeAndAward(project.period, project.award)}
-                    </Typography>
+                    {renderTimeAndVenue(item.period, item.venue)}
                   </Box>
                 </Box>
 
                 <Typography variant="body2" color="text.secondary" paragraph>
-                  {project.description}
+                  {item.description}
                 </Typography>
 
                 <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-                  {project.tags.map((tag, tagIndex) => (
+                  {item.tags.map((tag, tagIndex) => (
                     <Chip key={tagIndex} label={tag} size="small" />
                   ))}
                 </Stack>
 
-                {project.links && project.links.length > 0 && (
+                {item.links && item.links.length > 0 && (
                   <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
-                    {project.links.map((link, linkIndex) => (
+                    {item.links.map((link, linkIndex) => (
                       <Button
                         key={linkIndex}
                         variant="outlined"

@@ -1,18 +1,18 @@
 import { ArrowLeft } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
-import { projects } from "../../data/projects";
+import { research } from "../../data/research";
 import { Button, Chip, Divider, Typography, Box, Grid } from "@mui/material";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { useEffect } from "react";
-import { renderTimeAndAward } from "../utils/projectsUtils";
+import { renderTimeAndVenue } from "../utils/researchUtils";
 
-export default function ProjectDetail() {
+export default function ResearchDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const project = projects[Number(id)];
+  const item = research[Number(id)];
 
-  if (!project) {
-    return <Typography>Project not found</Typography>;
+  if (!item) {
+    return <Typography>Research not found</Typography>;
   }
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function ProjectDetail() {
             sx={{ textTransform: "none", color: "black", gap: 1, ml: -1.5 }}
           >
             <ArrowLeft size={16} />
-            Back to Projects
+            Back to Research
           </Button>
         </Box>
       </Box>
@@ -44,21 +44,30 @@ export default function ProjectDetail() {
         <Box sx={{ mb: 6 }}>
           <Box sx={{ mb: 2 }}>
             <Typography variant="h3" component="h1" sx={{ fontWeight: "bold" }}>
-              {project.title}
+              {item.title}
             </Typography>
-            {renderTimeAndAward(project.period, project.award)}
+            {item.authors && (
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{ mt: 0.5 }}
+              >
+                {item.authors}
+              </Typography>
+            )}
+            {renderTimeAndVenue(item.period, item.venue)}
           </Box>
 
           {/* Tags */}
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-            {project.tags.map((tag) => (
+            {item.tags.map((tag) => (
               <Chip key={tag} label={tag} />
             ))}
           </Box>
         </Box>
 
         {/* Project Image */}
-        {project.thumbnail && (
+        {item.thumbnail && (
           <Box
             sx={{
               mb: 6,
@@ -71,8 +80,8 @@ export default function ProjectDetail() {
             }}
           >
             <ImageWithFallback
-              src={project.thumbnail}
-              alt={project.title}
+              src={item.thumbnail}
+              alt={item.title}
               className="w-full h-auto aspect-video object-cover"
             />
           </Box>
@@ -92,7 +101,7 @@ export default function ProjectDetail() {
             color="text.secondary"
             sx={{ lineHeight: 1.75 }}
           >
-            {project.description}
+            {item.description}
           </Typography>
         </Box>
 
@@ -114,7 +123,7 @@ export default function ProjectDetail() {
               Role
             </Typography>
             <Typography variant="body1" sx={{ fontWeight: "medium" }}>
-              {project.role}
+              {item.role}
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -122,7 +131,7 @@ export default function ProjectDetail() {
               Client
             </Typography>
             <Typography variant="body1" sx={{ fontWeight: "medium" }}>
-              {project.client}
+              {item.client}
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -130,14 +139,14 @@ export default function ProjectDetail() {
               Duration
             </Typography>
             <Typography variant="body1" sx={{ fontWeight: "medium" }}>
-              {project.duration}
+              {item.duration}
             </Typography>
           </Grid>
         </Grid>
 
         {/* Project Details */}
         <Box sx={{ mb: 6 }}>
-          {project.details.map((detail, index) => (
+          {item.details.map((detail, index) => (
             <Box key={index} sx={{ mb: 4 }}>
               <Typography
                 variant="h5"
@@ -161,7 +170,7 @@ export default function ProjectDetail() {
 
         {/* Links */}
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
-          {project.links.map((link, index) => (
+          {item.links.map((link, index) => (
             <Button
               key={index}
               variant="outlined"
