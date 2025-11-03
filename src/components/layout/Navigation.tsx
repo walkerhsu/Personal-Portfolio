@@ -19,33 +19,29 @@ import WorkIcon from "@mui/icons-material/Work";
 import ScienceIcon from "@mui/icons-material/Science";
 import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import { Link } from "react-router-dom";
 
-interface NavigationProps {
-  onNavigate: (sectionId: string) => void;
-}
-
-export default function Navigation({ onNavigate }: NavigationProps) {
+export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const navItems = [
-    { id: "projects", label: "Projects", icon: <WorkIcon /> },
-    { id: "research", label: "Research", icon: <ScienceIcon /> },
-    { id: "experience", label: "Experience", icon: <WorkHistoryIcon /> },
-    { id: "awards", label: "Awards", icon: <EmojiEventsIcon /> },
+    { id: "projects", label: "Projects", icon: <WorkIcon />, path: "/projects" },
+    { id: "research", label: "Research", icon: <ScienceIcon />, path: "/research" },
+    { id: "experience", label: "Experience", icon: <WorkHistoryIcon />, path: "/experience" },
+    { id: "awards", label: "Awards", icon: <EmojiEventsIcon />, path: "/awards" },
   ];
 
-  const handleNavClick = (sectionId: string) => {
-    onNavigate(sectionId);
-    setMobileOpen(false);
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
     <List sx={{ width: 250, pt: 3 }}>
       {navItems.map((item) => (
         <ListItem key={item.id} disablePadding>
-          <ListItemButton onClick={() => handleNavClick(item.id)}>
+          <ListItemButton component={Link} to={item.path} onClick={handleDrawerToggle}>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.label} />
           </ListItemButton>
@@ -68,14 +64,13 @@ export default function Navigation({ onNavigate }: NavigationProps) {
         <Toolbar>
           <Typography
             variant="h6"
-            component="button"
-            onClick={() => onNavigate("header")}
+            component={Link}
+            to="/"
             sx={{
               flexGrow: 1,
               textAlign: "left",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
+              textDecoration: "none",
+              color: "inherit",
               "&:hover": { color: "primary.main" },
             }}
           >
@@ -86,7 +81,7 @@ export default function Navigation({ onNavigate }: NavigationProps) {
             <IconButton
               color="inherit"
               edge="end"
-              onClick={() => setMobileOpen(true)}
+              onClick={handleDrawerToggle}
             >
               <MenuIcon />
             </IconButton>
@@ -95,8 +90,9 @@ export default function Navigation({ onNavigate }: NavigationProps) {
               {navItems.map((item) => (
                 <Button
                   key={item.id}
+                  component={Link}
+                  to={item.path}
                   startIcon={item.icon}
-                  onClick={() => handleNavClick(item.id)}
                   sx={{ color: "text.primary" }}
                 >
                   {item.label}
@@ -110,7 +106,7 @@ export default function Navigation({ onNavigate }: NavigationProps) {
       <Drawer
         anchor="right"
         open={mobileOpen}
-        onClose={() => setMobileOpen(false)}
+        onClose={handleDrawerToggle}
       >
         {drawer}
       </Drawer>
