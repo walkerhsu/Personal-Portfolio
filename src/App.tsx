@@ -1,15 +1,14 @@
-import { ThemeProvider, createTheme, CssBaseline, Box } from "@mui/material";
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
-import Footer from "./components/layout/Footer";
-import Navigation from "./components/layout/Navigation";
 import ExperienceDetail from "./components/details/ExperienceDetail";
 import ProjectDetail from "./components/details/ProjectDetail";
 import ResearchDetail from "./components/details/ResearchDetail";
 import HomePage from "./pages/HomePage";
-import ProjectsPage from "./pages/ProjectsPage";
-import ResearchPage from "./pages/ResearchPage";
-import ExperiencePage from "./pages/ExperiencePage";
-import AwardsPage from "./pages/AwardsPage";
+import Projects from "./components/sections/Projects";
+import Research from "./components/sections/Research";
+import Experience from "./components/sections/Experience";
+import Awards from "./components/sections/Awards";
+import Layout from "./pages/Layout";
 
 const theme = createTheme({
   palette: {
@@ -41,25 +40,18 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box
-        sx={{
-          minHeight: "100vh",
-          background: "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)",
-        }}
-      >
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/research" element={<ResearchPage />} />
-          <Route path="/experience" element={<ExperiencePage />} />
-          <Route path="/awards" element={<AwardsPage />} />
-          <Route path="/experience/:id" element={<ExperienceDetail />} />
-          <Route path="/project/:id" element={<ProjectDetail />} />
-          <Route path="/research/:id" element={<ResearchDetail />} />
-        </Routes>
-        <Footer />
-      </Box>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="research" element={<Research />} />
+          <Route path="experience" element={<Experience />} />
+          <Route path="awards" element={<Awards />} />
+          <Route path="experience/:id" element={<ExperienceDetail />} />
+          <Route path="project/:id" element={<ProjectDetail />} />
+          <Route path="research/:id" element={<ResearchDetail />} />
+        </Route>
+      </Routes>
     </ThemeProvider>
   );
 }
