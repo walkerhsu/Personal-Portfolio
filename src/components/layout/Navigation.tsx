@@ -27,10 +27,30 @@ export default function Navigation() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const navItems = [
-    { id: "projects", label: "Projects", icon: <WorkIcon />, path: "/projects" },
-    { id: "research", label: "Research", icon: <ScienceIcon />, path: "/research" },
-    { id: "experience", label: "Experience", icon: <WorkHistoryIcon />, path: "/experience" },
-    { id: "awards", label: "Awards", icon: <EmojiEventsIcon />, path: "/awards" },
+    {
+      id: "projects",
+      label: "Projects",
+      icon: <WorkIcon />,
+      path: "/projects",
+    },
+    {
+      id: "research",
+      label: "Research",
+      icon: <ScienceIcon />,
+      path: "/research",
+    },
+    {
+      id: "experience",
+      label: "Experience",
+      icon: <WorkHistoryIcon />,
+      path: "/experience",
+    },
+    {
+      id: "awards",
+      label: "Awards",
+      icon: <EmojiEventsIcon />,
+      path: "/awards",
+    },
   ];
 
   const handleDrawerToggle = () => {
@@ -41,7 +61,11 @@ export default function Navigation() {
     <List sx={{ width: 250, pt: 3 }}>
       {navItems.map((item) => (
         <ListItem key={item.id} disablePadding>
-          <ListItemButton component={Link} to={item.path} onClick={handleDrawerToggle}>
+          <ListItemButton
+            component={Link}
+            to={item.path}
+            onClick={handleDrawerToggle}
+          >
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.label} />
           </ListItemButton>
@@ -59,6 +83,7 @@ export default function Navigation() {
           backdropFilter: "blur(10px)",
           color: "text.primary",
           boxShadow: 1,
+          height: "64px",
         }}
       >
         <Toolbar>
@@ -78,11 +103,7 @@ export default function Navigation() {
           </Typography>
 
           {isMobile ? (
-            <IconButton
-              color="inherit"
-              edge="end"
-              onClick={handleDrawerToggle}
-            >
+            <IconButton color="inherit" edge="end" onClick={handleDrawerToggle}>
               <MenuIcon />
             </IconButton>
           ) : (
@@ -103,11 +124,7 @@ export default function Navigation() {
         </Toolbar>
       </AppBar>
 
-      <Drawer
-        anchor="right"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-      >
+      <Drawer anchor="right" open={mobileOpen} onClose={handleDrawerToggle}>
         {drawer}
       </Drawer>
     </>

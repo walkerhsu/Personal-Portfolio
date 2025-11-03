@@ -1,6 +1,5 @@
-import { Box, Typography, IconButton, Link as MuiLink, Stack } from "@mui/material";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { Box, Typography } from "@mui/material";
+import Contact from "./Contact";
 
 export default function Footer() {
   return (
@@ -17,30 +16,11 @@ export default function Footer() {
         textAlign: "center",
       }}
     >
+      <Contact />
       <Typography variant="body2" color="text.secondary" gutterBottom>
-        © {new Date().getFullYear()} Ching-Yu (Walker), Hsu. All rights reserved.
+        © {new Date().getFullYear()} Ching-Yu (Walker), Hsu. All rights
+        reserved.
       </Typography>
-      <Stack direction="row" justifyContent="center" spacing={1}>
-        <IconButton
-          aria-label="GitHub"
-          href="https://github.com/walkerhsu"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <GitHubIcon />
-        </IconButton>
-        <IconButton
-          aria-label="LinkedIn"
-          href="https://www.linkedin.com/in/walkerhsu/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <LinkedInIcon />
-        </IconButton>
-      </Stack>
-      <MuiLink href="#header" sx={{ display: "block", mt: 1 }}>
-        Back to top
-      </MuiLink>
     </Box>
   );
 }

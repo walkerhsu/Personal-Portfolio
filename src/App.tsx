@@ -1,9 +1,4 @@
-import {
-  ThemeProvider,
-  createTheme,
-  CssBaseline,
-  Box,
-} from "@mui/material";
+import { ThemeProvider, createTheme, CssBaseline, Box } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/layout/Footer";
 import Navigation from "./components/layout/Navigation";
