@@ -9,6 +9,7 @@ import Research from "./components/sections/Research";
 import Experience from "./components/sections/Experience";
 import Awards from "./components/sections/Awards";
 import Layout from "./pages/Layout";
+import SectionLayout from "./pages/SectionLayout";
 
 const theme = createTheme({
   palette: {
@@ -43,13 +44,15 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="projects" element={<Projects />} />
-          <Route path="research" element={<Research />} />
-          <Route path="experience" element={<Experience />} />
-          <Route path="awards" element={<Awards />} />
-          <Route path="experience/:id" element={<ExperienceDetail />} />
-          <Route path="project/:id" element={<ProjectDetail />} />
-          <Route path="research/:id" element={<ResearchDetail />} />
+          <Route element={<SectionLayout />}>
+            <Route path="projects" element={<Projects />} />
+            <Route path="research" element={<Research />} />
+            <Route path="experience" element={<Experience />} />
+            <Route path="awards" element={<Awards />} />
+            <Route path="experience/:id" element={<ExperienceDetail />} />
+            <Route path="project/:id" element={<ProjectDetail />} />
+            <Route path="research/:id" element={<ResearchDetail />} />
+          </Route>
         </Route>
       </Routes>
     </ThemeProvider>
