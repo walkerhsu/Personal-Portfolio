@@ -95,7 +95,7 @@ export const experiences: Experience[] = [
     links: [],
   },
   {
-    title: "Teaching Assistant",
+    title: "Teaching Assistant x3",
     client: "NTU Machine Learning Courses",
     period: "Jan. 2025 - Present",
     description:
