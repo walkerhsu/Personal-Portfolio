@@ -1,5 +1,6 @@
 import React from "react";
 import ArticleIcon from "@mui/icons-material/Article";
+import AEGIS from "/research/AEGIS.png";
 
 export interface Research {
   title: string;
@@ -32,7 +33,7 @@ export const research: Research[] = [
     description:
       "Devised a GAN-like framework to automatically generate prompts to defend against malicious prompt injection attacks. Tested the framework on real-world articles across various LLMs, achieving a 20% in True Positive Rate (TPR) with only 2% decrease in True Negative Rate (TNR).",
     period: "2023 Fall ~ Present",
-    thumbnail: "/research/AEGIS.png",
+    thumbnail: AEGIS,
     tags: ["Python", "LLM", "GAN", "Prompt Injection"],
     role: "AI Researcher",
     client: "Academic Research",

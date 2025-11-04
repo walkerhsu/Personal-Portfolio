@@ -10,6 +10,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  base: "/Personal-Website/",
   build: {
     target: "esnext",
     outDir: "build",
