@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navigation from "../components/layout/Navigation";
 import Footer from "../components/layout/Footer";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 
 const Layout = () => {
   return (
@@ -13,9 +13,7 @@ const Layout = () => {
     >
       <Navigation />
       <Box>
-        <Container maxWidth="lg" sx={{ py: 6 }}>
-          <Outlet />
-        </Container>
+        <Outlet />
       </Box>
       <Footer />
     </Box>
