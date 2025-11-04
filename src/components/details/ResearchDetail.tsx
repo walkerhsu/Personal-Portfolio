@@ -26,7 +26,7 @@ export default function ResearchDetail() {
         <Box sx={{ maxWidth: "1152px", mx: "auto", px: 3, py: 3 }}>
           <Button
             variant="text"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/research")}
             sx={{ textTransform: "none", color: "black", gap: 1, ml: -1.5 }}
           >
             <ArrowLeft size={16} />

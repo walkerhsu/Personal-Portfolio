@@ -1,9 +1,6 @@
 import { Container, Box, Typography } from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School";
-import Projects from "../components/sections/Projects";
-import Research from "../components/sections/Research";
-import Experience from "../components/sections/Experience";
-import Awards from "../components/sections/Awards";
+import backgroundImg from '/background.jpg';
 
 const HomePage = () => {
   return (
@@ -18,7 +15,7 @@ const HomePage = () => {
           justifyContent: "flex-end",
           color: "black",
           textAlign: "right",
-          backgroundImage: "url(/background.jpg)",
+          backgroundImage: `url(${backgroundImg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           paddingTop: "40px",
