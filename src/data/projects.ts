@@ -119,6 +119,43 @@ export const projects: Project[] = [
     ],
   },
   {
+    title: "Multimodal Perceptron in Autonomous Driving",
+    period: "2024 Fall",
+    description:
+      "Developed a multimodal perceptron model to enhance perception in autonomous driving. The project involved finetuning LLaVA with LoRA and integrating YOLO and Depth Anything model to improve the object detection and the overall image QA accuracy.",
+    thumbnail: caRPG,
+    tags: ["Python", "Pytorch", "LLaVA", "YOLO", "Depth Anything", "Computer Vision", "finetuning"],
+    role: "Team Leader | Developer",
+
+    client: "Deep Learning for Computer Learning Course",
+    duration: "1 Semester",
+    details: [
+      {
+        title: "Challenge",
+        content: "The challenge was to improve the perception capabilities of autonomous vehicles by leveraging multimodal data and the overall image QA accuracy.",
+      },
+      {
+        title: "Solution",
+        content: "We introduce a new module that effectively combines various visual information, including the YOLO object detection results and depth maps from the Depth Anything model, with the LLaVA framework. By finetuning LLaVA using LoRA techniques, we enhanced its ability to process and understand complex driving scenes, leading to improved accuracy in object recognition and situational awareness.",
+      },
+      {
+        title: "Impact",
+        content: "The project significantly improved the perception capabilities of autonomous vehicles, enabling them to better understand and react to their environment. This advancement has the potential by boosting the accuracy with about 60%.",
+      },
+      {
+        title: "Lessons Learned",
+        content: "This project enhanced my skills in multimodal learning and model finetuning techniques. I learned how to effectively integrate different data modalities to improve model performance in complex tasks such as autonomous driving.",
+      },
+    ],
+    links: [
+      {
+        label: "GitHub Repository",
+        url: "https://github.com/walkerhsu/makeNTU2024",
+        icon: GitHubIcon,
+      },
+    ],
+  },
+  {
     title: "Water Intake Tracking System",
     period: "2024 Fall",
     description:
